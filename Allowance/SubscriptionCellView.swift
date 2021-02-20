@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct SubscriptionCellView: View {
   var subscription: Subscription
+
+  let processor = DownsamplingImageProcessor(size: CGSize(width: 100, height: 100))
 
   var body: some View {
     ZStack {
@@ -20,8 +23,10 @@ struct SubscriptionCellView: View {
 
       // Foreground
       HStack() {
-        Image("DefaultIcon").resizable()
-          .frame(width: 40, height: 40, alignment: .trailing)
+        KFImage(URL(string: subscription.imageUrl)!)
+          .setProcessor(processor)
+          .scaleFactor(UIScreen.main.scale)
+          .cacheOriginalImage()
 
         VStack(alignment: .leading) {
           HStack {
@@ -56,7 +61,9 @@ struct SubscriptionCellView_Previews: PreviewProvider {
                             name: "Spotify",
                             description: "MUSIC STREAMING",
                             price: "$12.99",
+                            imageUrl: "https://www.rohannagar.com/allowance-data/spotify/white.png",
                             firstBill: Date(),
-                            cycle: .monthly, hexColor: "#1db954"))
+                            cycle: .monthly,
+                            hexColor: "#1db954"))
     }
 }

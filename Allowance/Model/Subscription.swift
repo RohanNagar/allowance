@@ -13,6 +13,9 @@ struct Subscription: Hashable, Identifiable {
   var name: String
   var description: String
   var price: String
+
+  var imageUrl: String
+
   var firstBill: Date
   var cycle: CycleLength
 

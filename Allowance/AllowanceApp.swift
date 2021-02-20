@@ -11,7 +11,7 @@ import SwiftUI
 struct AllowanceApp: App {
     var body: some Scene {
         WindowGroup {
-            SubscriptionView()
+            SubscriptionView(subscriptions: [])
         }
     }
 }
